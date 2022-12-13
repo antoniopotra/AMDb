@@ -1,5 +1,6 @@
 :root {
     --orange: #d95c00;
+    --darker-blue: #020d17;
     --dark-blue: #021342;
     --light-blue: #3d7ad3;
     --lighter-blue: #97b9f8;
@@ -11,7 +12,7 @@
 }
 
 body {
-    background-color: #020d17;
+    background-color: var(--darker-blue);
 }
 
 .container {
@@ -117,7 +118,7 @@ img {
 .form-popup > form {
     background-color: var(--lighter-blue);
     border-radius: 8px;
-    box-shadow: 0 10px 25px #020d17;
+    box-shadow: 0 10px 25px var(--darker-blue);
     width: 100%;
     height: fit-content;
     color: var(--dark-blue);
