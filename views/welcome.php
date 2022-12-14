@@ -7,6 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AMDb</title>
+    <link href="../public/css/colors.css" rel="stylesheet" type="text/css">
     <link href="../public/css/welcome.css" rel="stylesheet" type="text/css">
     <script src="../public/js/welcome.js"></script>
     <script src="https://kit.fontawesome.com/a20944aa28.js" crossorigin="anonymous"></script>
