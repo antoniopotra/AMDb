@@ -1,9 +1,9 @@
 <?php
-    require 'env.php';
-    require 'functions/db-connect.php';
+    require_once 'functions/database.php';
 
-    $credentials = new Credentials();
-    $db = dbConnect($credentials);
+    session_start();
+
+    $db = dbConnect();
 
     if ($db) {
         header('location: views/welcome.php');

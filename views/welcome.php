@@ -3,7 +3,7 @@
 <script src="https://kit.fontawesome.com/a20944aa28.js" crossorigin="anonymous"></script>
 
 <?php
-include '../default/header.php';
+include_once '../default/header.php';
 ?>
 
 <div class="container" id="container">
@@ -23,16 +23,16 @@ include '../default/header.php';
 </div>
 
 <div class="form-popup" id="log-in-form">
-    <form>
+    <form action="../actions/log-in.php" method="post">
         <h2>Log In</h2>
 
         <div class="input-container">
-            <input type="text" placeholder="Username" id="log-username" required>
+            <input type="text" placeholder="Username" id="log-username" name="username" required>
             <label for="log-username">Username</label>
         </div>
 
         <div class="input-container">
-            <input type="password" placeholder="Password" id="log-password" required>
+            <input type="password" placeholder="Password" id="log-password" name="password" required>
             <label for="log-password">Password</label>
         </div>
 
@@ -42,26 +42,31 @@ include '../default/header.php';
 </div>
 
 <div class="form-popup" id="sign-up-form">
-    <form>
+    <form action="../actions/sign-up.php" method="post">
         <h2>Sign Up</h2>
 
         <div class="input-container">
-            <input type="email" placeholder="Email" id="sign-email" required>
-            <label for="sign-email">Email</label>
+            <input type="text" placeholder="Full name" id="sign-full-name" name="full-name" required>
+            <label for="sign-full-name">Full name</label>
         </div>
 
         <div class="input-container">
-            <input type="text" placeholder="Username" id="sign-username" required>
+            <input type="text" placeholder="Username" id="sign-username" name="username" required>
             <label for="sign-username">Username</label>
         </div>
 
         <div class="input-container">
-            <input type="password" placeholder="Password" id="sign-password" required>
+            <input type="email" placeholder="Email" id="sign-email" name="email" required>
+            <label for="sign-email">Email</label>
+        </div>
+
+        <div class="input-container">
+            <input type="password" placeholder="Password" id="sign-password" name="password" required>
             <label for="sign-password">Password</label>
         </div>
 
         <div class="input-container">
-            <input type="password" placeholder="Repeat password" id="sign-repeat-password" required>
+            <input type="password" placeholder="Repeat password" id="sign-repeat-password" name="repeat-password" required>
             <label for="sign-repeat-password">Repeat password</label>
         </div>
 
@@ -88,5 +93,5 @@ include '../default/header.php';
 </div>
 
 <?php
-include '../default/footer.php';
+include_once '../default/footer.php';
 ?>
