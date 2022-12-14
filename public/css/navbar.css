@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.menu {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    list-style: none;
+    row-gap: 20px;
+    width: 100%;
+    height: fit-content;
+    padding: 20px 0;
+    background-color: #031d33;
+    color: white;
+    box-shadow: 0 2px 40px 2px black;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.menu-item {
+    padding-right: 40px;
+}
+
+.menu-item:first-child {
+    margin-right: auto;
+    padding-left: 40px;
+}
