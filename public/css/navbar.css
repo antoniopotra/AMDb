@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: sans-serif;
 }
 
 .menu-wrapper {
@@ -23,7 +24,6 @@
     background-color: #031d33;
     color: white;
     box-shadow: 0 2px 40px 2px black;
-    font-family: sans-serif;
     font-size: 16px;
 }
 
@@ -34,4 +34,10 @@
 .menu-item:first-child {
     margin-right: auto;
     padding-left: 40px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
 }

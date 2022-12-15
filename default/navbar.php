@@ -2,9 +2,9 @@
 
 <div class="menu-wrapper">
     <ul class="menu">
-        <li class="menu-item">LOGO</li>
+        <li class="menu-item"><a href="../views/home.php">LOGO</a></li>
         <li class="menu-item">MOVIES</li>
-        <li class="menu-item">ACCOUNT</li>
+        <li class="menu-item">PROFILE</li>
         <li class="menu-item">SEARCH</li>
     </ul>
 </div>

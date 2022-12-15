@@ -1,8 +1,6 @@
 <?php
     require_once 'functions/database.php';
 
-    session_start();
-
     $db = dbConnect();
 
     if ($db) {

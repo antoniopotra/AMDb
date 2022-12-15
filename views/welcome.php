@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <link href="../public/css/welcome.css" rel="stylesheet" type="text/css">
 <script src="../public/js/welcome.js"></script>
 <script src="https://kit.fontawesome.com/a20944aa28.js" crossorigin="anonymous"></script>
@@ -36,6 +38,13 @@ include_once '../default/header.php';
             <label for="log-password">Password</label>
         </div>
 
+        <h6>
+            <?php
+            echo $_SESSION['log-in-error'];
+            $_SESSION['log-in-error'] = "";
+            ?>
+        </h6>
+
         <button type="submit">Log In</button>
         <button onclick="closeForm('log-in-form')">Close</button>
     </form>
@@ -69,6 +78,13 @@ include_once '../default/header.php';
             <input type="password" placeholder="Repeat password" id="sign-repeat-password" name="repeat-password" required>
             <label for="sign-repeat-password">Repeat password</label>
         </div>
+
+        <h6>
+            <?php
+            echo $_SESSION['sign-up-error'];
+            $_SESSION['sign-up-error'] = "";
+            ?>
+        </h6>
 
         <button type="submit">Sign Up</button>
         <button onclick="closeForm('sign-up-form')">Close</button>
