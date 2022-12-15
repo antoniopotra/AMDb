@@ -7,5 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>AMDb</title>
     <link href="../public/css/colors.css" type="text/css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a20944aa28.js" crossorigin="anonymous"></script>
 </head>
 <body>

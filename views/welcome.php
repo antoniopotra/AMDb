@@ -2,7 +2,6 @@
 
 <link href="../public/css/welcome.css" rel="stylesheet" type="text/css">
 <script src="../public/js/welcome.js"></script>
-<script src="https://kit.fontawesome.com/a20944aa28.js" crossorigin="anonymous"></script>
 
 <?php
 include_once '../default/header.php';
