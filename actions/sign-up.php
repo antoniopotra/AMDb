@@ -38,5 +38,5 @@ if (pg_num_rows($query) != 0) {
     exit();
 }
 
-addUser($full_name, $username, $email, $password);
+$_SESSION['user'] = addUser($full_name, $username, $email, $password);
 header('location: ../views/home.php');

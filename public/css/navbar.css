@@ -30,12 +30,12 @@
 .navbar-item:first-child {
     margin-right: auto;
     padding-left: 4vw;
-    transform: translateX(-10px);
+    transform: translate(-10px, 2px);
 }
 
 .navbar-item:last-child {
     padding-right: 4vw;
-    padding-top: 7px;
+    transform: translateY(6px);
 }
 
 .dropdown-icon {

@@ -15,11 +15,13 @@ if (pg_num_rows($query) != 1) {
     exit();
 }
 
-$query = pg_query($db, "select password from person where username = '$username' and password = '$password'");
+$query = pg_query($db, "select id, password from person where username = '$username' and password = '$password'");
 if (pg_num_rows($query) != 1) {
-    $_SESSION['log-in-error'] = "Incorect password.";
+    $_SESSION['log-in-error'] = "Incorrect password.";
     header('location: ../views/welcome.php');
     exit();
 }
 
+$row = pg_fetch_array($query);
+$_SESSION['user'] = $row['id'];
 header('location: ../views/home.php');

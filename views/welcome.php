@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+if (isset($_SESSION['user'])) {
+    header('location: ../views/home.php');
+    exit();
+}
+?>
 
 <link href="../public/css/welcome.css" rel="stylesheet" type="text/css">
 <script src="../public/js/welcome.js"></script>
