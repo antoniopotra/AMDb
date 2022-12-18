@@ -3,35 +3,53 @@
 <?php
 function displayNavbar($location) {
     if ($location == 'home') { ?>
-        <div class="menu-wrapper">
-            <ul class="menu">
-                <li class="menu-item">LOGO</li>
-                <li class="menu-item"><a href="../views/home.php" style="color: var(--orange);">HOME</a></li>
-                <li class="menu-item">MY MOVIES</li>
-                <li class="menu-item">PROFILE</li>
-                <li class="menu-item"><i class="fa-solid fa-magnifying-glass"></i></li>
+        <div class="navbar-wrapper">
+            <ul class="navbar">
+                <li class="navbar-item"><img src="../public/images/logo.png" alt=""></li>
+                <li class="navbar-item">
+                    <div class="dropdown">
+                        <i class="fa-2x fa-solid fa-bars dropdown-icon"></i>
+                        <div class="dropdown-content">
+                            <a href="../views/home.php">HOME</a>
+                            <a href="#">MY MOVIES</a>
+                            <a href="#">PROFILE</a>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     <?php
     } else if ($location == 'my movies') { ?>
-        <div class="menu-wrapper">
-            <ul class="menu">
-                <li class="menu-item">LOGO</li>
-                <li class="menu-item"><a href="../views/home.php">HOME</a></li>
-                <li class="menu-item" style="color: var(--orange);">MY MOVIES</li>
-                <li class="menu-item">PROFILE</li>
-                <li class="menu-item"><i class="fa-solid fa-magnifying-glass"></i></li>
+        <div class="navbar-wrapper">
+            <ul class="navbar">
+                <li class="navbar-item">LOGO</li>
+                <li class="navbar-item">
+                    <div class="dropdown">
+                        <button class="dropdown-button">Right</button>
+                        <div class="dropdown-content">
+                            <a href="../views/home.php">HOME</a>
+                            <a href="#">MY MOVIES</a>
+                            <a href="#">PROFILE</a>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     <?php
     } else if ($location == 'profile') { ?>
-        <div class="menu-wrapper">
-            <ul class="menu">
-                <li class="menu-item">LOGO</li>
-                <li class="menu-item"><a href="../views/home.php">HOME</a></li>
-                <li class="menu-item">MY MOVIES</li>
-                <li class="menu-item" style="color: var(--orange);">PROFILE</li>
-                <li class="menu-item"><i class="fa-solid fa-magnifying-glass"></i></li>
+        <div class="navbar-wrapper">
+            <ul class="navbar">
+                <li class="navbar-item">LOGO</li>
+                <li class="navbar-item">
+                    <div class="dropdown">
+                        <button class="dropdown-button">Right</button>
+                        <div class="dropdown-content">
+                            <a href="../views/home.php">HOME</a>
+                            <a href="#">MY MOVIES</a>
+                            <a href="#">PROFILE</a>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     <?php

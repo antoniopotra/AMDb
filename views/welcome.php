@@ -92,7 +92,7 @@ include_once '../default/header.php';
 
 <div class="how-it-works">
     <div class="set">
-        <i class="fa-4x fa-regular fa-user"></i>
+        <i class="fa-4x fa-solid fa-user"></i>
         <p>Create an account</p>
     </div>
 
@@ -102,8 +102,8 @@ include_once '../default/header.php';
     </div>
 
     <div class="set">
-        <i class="fa-4x fa-solid fa-globe"></i>
-        <p>See what other people watch</p>
+        <i class="fa-4x fa-solid fa-magnifying-glass"></i>
+        <p>Discover new movies</p>
     </div>
 </div>
 

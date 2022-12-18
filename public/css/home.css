@@ -10,15 +10,14 @@ body {
     overflow-x: hidden;
 }
 
-.latest-movies, .recommendations {
-    padding-top: 10vh;
+.latest-movies {
+    padding-top: 12vh;
     padding-left: 4vw;
 }
 
-@media only screen and (max-width: 500px) {
-    .latest-movies {
-        padding-top: 14vh;
-    }
+.recommendations {
+    padding-top: 5vh;
+    padding-left: 4vw;
 }
 
 .latest-movies > h1, .recommendations > h1 {
@@ -39,11 +38,7 @@ body {
     display: none;
 }
 
-::-webkit-scrollbar-thumb {
-
-}
-
 .image-wrapper > img {
-    width: 180px;
-    height: 250px;
+    border: 6px solid var(--white-blue);
+    height: 230px;
 }
