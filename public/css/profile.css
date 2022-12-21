@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: var(--black-blue);
+}
+
+.container {
+    margin: 10vh 5vw 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 40px;
+    row-gap: 35px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+}
+
+.user-icon {
+    width: 300px;
+}
+
+.movies-info {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.watched, .reviewed {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.user-reviews {
+    margin: 35px 5vw 0;
+    color: white;
+}
