@@ -46,3 +46,17 @@ body {
     margin: 35px 5vw 0;
     color: white;
 }
+
+.review-card {
+    height: fit-content;
+    padding: 20px;
+    background-color: rgb(2, 19, 66, 0.6);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px black;
+    margin-top: 40px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
