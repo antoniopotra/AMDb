@@ -17,14 +17,14 @@ require_once '../functions/movie.php';
 <div class="latest-movies">
     <h1>Recently added</h1>
     <div class="image-wrapper">
-        <?php loadLatestMovies(); ?>
+        <?php latestMovies(); ?>
     </div>
 </div>
 
 <div class="recommendations">
     <h1>Recommended movies</h1>
     <div class="image-wrapper">
-        <?php loadRecommendations(); ?>
+        <?php recommendations(); ?>
     </div>
 </div>
 

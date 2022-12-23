@@ -33,28 +33,40 @@ require_once '../functions/review.php';
         <div class="watched">
             <?php
             $query = pg_query($db, "select count(m.id) from movie m join watched w on m.id = w.movie join person p on p.id = w.person where p.id = $id");
-            $count = pg_fetch_array($query);
+            $watched = pg_fetch_array($query);
             ?>
 
-            <h1> <?php echo $count['count']; ?> </h1>
+            <h1> <?php echo $watched['count']; ?> </h1>
             <h4> <a href="../views/my-movies.php"> movies watched </a> </h4>
         </div>
 
         <div class="reviewed">
             <?php
-            $query = pg_query($db, "select count(m.id) from movie m join review r on m.id = r.movie join person p on p.id = r.person where p.id = $id");
-            $count = pg_fetch_array($query);
+            $query = pg_query($db, "select count(m.id), round(avg(r.grade), 2) from movie m join review r on m.id = r.movie join person p on p.id = r.person where p.id = $id");
+            $review = pg_fetch_array($query);
             ?>
 
-            <h1> <?php echo $count['count']; ?> </h1>
+            <h1> <?php echo $review['count']; ?> </h1>
             <h4> reviews </h4>
+        </div>
+
+        <div class="grading">
+            <h1> <?php echo $review['round']; ?> </h1>
+            <h4> <i class="fa-solid fa-star" style="color: var(--orange);"></i> on average </h4>
         </div>
     </div>
 </div>
 
+<div class="user-movies">
+    <h1>Recently watched</h1>
+    <div class="image-wrapper">
+        <?php recentlyWatched(); ?>
+    </div>
+</div>
+
 <div class="user-reviews">
-    <h1>Reviews</h1>
-    <?php loadAllReviews(); ?>
+    <h1>Latest reviews</h1>
+    <?php latestReviews(); ?>
 </div>
 
 <?php include_once '../default/footer.php'; ?>

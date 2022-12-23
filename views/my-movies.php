@@ -15,7 +15,7 @@ require_once '../functions/movie.php';
 ?>
 
 <div class="image-wrapper">
-    <?php loadAllWatched(); ?>
+    <?php allWatched(); ?>
 </div>
 
 <?php include_once '../default/footer.php'; ?>
