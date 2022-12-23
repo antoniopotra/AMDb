@@ -1,5 +1,3 @@
-<link href="../public/css/movie.css" rel="stylesheet" type="text/css">
-
 <?php
 session_start();
 
@@ -32,7 +30,7 @@ $query = pg_query($db, "select count(w) from watched w where w.movie = $movie_id
 $watch = pg_fetch_array($query);
 ?>
 
-<div class="container">
+<div class="movie-container">
     <div class="poster">
         <?php moviePoster($movie); ?>
         <div class="watch-review-info">
@@ -86,7 +84,7 @@ $watch = pg_fetch_array($query);
     <?php myReviewsForMovie($movie_id); ?>
 </div>
 
-<div class="other-reviews">
+<div class="user-reviews">
     <h1>Other reviews</h1>
     <?php otherReviewsForMovie($movie_id); ?>
 </div>

@@ -1,5 +1,3 @@
-<link href="../public/css/home.css" rel="stylesheet" type="text/css">
-
 <?php
 session_start();
 

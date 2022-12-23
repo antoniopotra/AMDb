@@ -1,0 +1,455 @@
+:root {
+    --orange: #d95c00;
+    --black-blue: #020d17;
+    --dark-blue: #021342;
+    --light-blue: #3d7ad3;
+    --white-blue: #b2d6fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    background-color: var(--black-blue);
+    overflow-x: hidden;
+}
+
+.welcome-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    transition: 0.5s;
+}
+
+.welcome-container > img {
+    width: 100%;
+    height: auto;
+}
+
+.inner-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.text-container {
+    margin: 0 30px;
+}
+
+.text-container > h1 {
+    font-size: 90px;
+}
+
+.text-container > h2 {
+    margin: 40px 0 60px;
+    font-size: 40px;
+}
+
+.button-container {
+    column-gap: 40px;
+    row-gap: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.button-container > button {
+    border-style: none;
+    font-size: 20px;
+    width: 400px;
+    height: 60px;
+    transition: 0.3s;
+    cursor: pointer;
+    color: var(--dark-blue);
+}
+
+.button-container > button:first-child {
+    background-color: var(--light-blue);
+}
+
+.button-container > button:last-child {
+    background-color: var(--orange);
+}
+
+.button-container > button:first-child:hover {
+    background-color: var(--orange);
+    border-radius: 10px;
+}
+
+.button-container > button:last-child:hover {
+    background-color: var(--light-blue);
+    border-radius: 10px;
+}
+
+.form-popup {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(calc(-50% - 40px), calc(-50% - 20px));
+    width: 80vw;
+    max-width: 600px;
+}
+
+.form-popup > form {
+    background-color: var(--white-blue);
+    border-radius: 8px;
+    width: 100%;
+    height: fit-content;
+    font-size: 30px;
+    padding: 20px 40px;
+}
+
+.form-popup > form > h2 {
+    margin-bottom: 20px;
+    color: var(--dark-blue);
+}
+
+.input-container {
+    position: relative;
+    height: 50px;
+    width: calc(100% - 20px);
+    margin-bottom: 25px;
+}
+
+.input-container > input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--dark-blue);
+    border-radius: 8px;
+    outline: none;
+    background: transparent;
+    padding-left: 20px;
+    color: var(--dark-blue);
+    font-size: 16px;
+}
+
+.input-container > input::placeholder {
+    color: transparent;
+}
+
+.input-container > label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: var(--dark-blue);
+    transition: 0.5s;
+    background-color: var(--white-blue);
+    font-size: 16px;
+}
+
+.form-popup > form > button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--dark-blue);
+    font-size: 16px;
+}
+
+.form-popup > form > button:first-of-type {
+    background-color: var(--light-blue);
+}
+
+.form-popup > form > button:last-of-type {
+    background-color: var(--orange);
+}
+
+.input-container > input:focus {
+    border: 2px solid var(--dark-blue);
+}
+
+.input-container > input:focus + label {
+    top: -7px;
+    left: -1px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark-blue);
+}
+
+.input-container > input:not(:placeholder-shown) + label {
+    top: -7px;
+    left: -1px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--dark-blue);
+}
+
+.how-it-works {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    column-gap: 80px;
+    row-gap: 80px;
+    font-size: 20px;
+    margin: 0 6vw 20vh;
+}
+
+.set {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.set > p {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.form-popup > form > h6 {
+    font-size: 16px;
+    padding-bottom: 10px;
+}
+
+.navbar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.navbar {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    list-style: none;
+    row-gap: 20px;
+    width: 100%;
+    height: fit-content;
+    padding: 12px 0;
+    background-color: #031d33;
+    box-shadow: 0 2px 40px 2px black;
+    font-size: 16px;
+}
+
+.navbar-item:first-child {
+    margin-right: auto;
+    padding-left: 4vw;
+    transform: translate(-10px, 2px);
+}
+
+.navbar-item:last-child {
+    padding-right: 4vw;
+    transform: translateY(6px);
+}
+
+.dropdown-icon {
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: var(--white-blue);
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 var(--black-blue);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: var(--dark-blue);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    color: var(--orange);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.navbar-item > img {
+    height: 40px;
+}
+
+.latest-movies {
+    padding-top: 12vh;
+    padding-left: 4vw;
+}
+
+.recommendations {
+    padding-top: 3vh;
+    padding-left: 4vw;
+}
+
+.latest-movies > h1, .recommendations > h1 {
+    padding-bottom: 20px;
+}
+
+.image-wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-right: 4vw;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.image-wrapper img {
+    border: 4px solid var(--white-blue);
+    height: 230px;
+}
+
+.image-wrapper-movie-page {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12vh 4vw 0;
+}
+
+.image-wrapper-movie-page img {
+    border: 2px solid var(--white-blue);
+    height: 120px;
+}
+
+.movie-container {
+    padding: 12vh 4vw 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.poster {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.poster img {
+    border: 4px solid var(--white-blue);
+    height: 230px;
+}
+
+.poster .watch-review-info {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.lighter {
+    font-weight: lighter;
+    color: var(--white-blue);
+}
+
+.director, .average-rating, .genre, .duration, .casting {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.director {
+    padding-top: 5px;
+}
+
+.director > p:last-child {
+    font-weight: bold;
+}
+
+.average-rating, .genre, .duration, .casting {
+    padding-top: 10px;
+}
+
+.genre > p {
+    border: 1px solid var(--white-blue);
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.casting > p:last-child > b {
+    display: none;
+}
+
+.user-reviews {
+    margin: 35px 5vw 0;
+}
+
+.review-card {
+    height: fit-content;
+    padding: 20px;
+    background-color: rgb(2, 19, 66, 0.6);
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px black;
+    margin-top: 30px;
+    word-wrap: break-word;
+}
+
+.review-card:last-child {
+    margin-bottom: 30px;
+}
+
+.profile-container {
+    margin: 10vh 5vw 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 40px;
+    row-gap: 35px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-icon {
+    width: 300px;
+}
+
+.movies-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.watched, .reviewed{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.grading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-movies {
+    margin: 35px 5vw 0;
+}
+
+.user-movies > h1 {
+    margin-bottom: 30px;
+}

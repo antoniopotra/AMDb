@@ -1,5 +1,3 @@
-<link href="../public/css/my-movies.css" type="text/css" rel="stylesheet">
-
 <?php
 session_start();
 
@@ -14,7 +12,7 @@ include_once '../default/navbar.php';
 require_once '../functions/movie.php';
 ?>
 
-<div class="image-wrapper">
+<div class="image-wrapper-movie-page">
     <?php allWatched(); ?>
 </div>
 

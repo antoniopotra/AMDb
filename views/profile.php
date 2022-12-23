@@ -1,5 +1,3 @@
-<link href="../public/css/profile.css" type="text/css" rel="stylesheet">
-
 <?php
 session_start();
 
@@ -15,7 +13,7 @@ require_once '../functions/database.php';
 require_once '../functions/review.php';
 ?>
 
-<div class="container">
+<div class="profile-container">
     <div class="user-info">
         <img src="../public/images/user.png" class="user-icon" alt="">
 

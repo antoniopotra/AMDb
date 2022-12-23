@@ -1,5 +1,3 @@
-<link href="../public/css/navbar.css" rel="stylesheet" type="text/css">
-
 <div class="navbar-wrapper">
     <ul class="navbar">
         <li class="navbar-item"><img src="../public/images/logo.png" alt=""></li>

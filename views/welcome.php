@@ -1,4 +1,3 @@
-<link href="../public/css/welcome.css" rel="stylesheet" type="text/css">
 <script src="../public/js/welcome.js"></script>
 
 <?php
@@ -12,7 +11,7 @@ if (isset($_SESSION['user'])) {
 include_once '../default/header.php';
 ?>
 
-<div class="container" id="container">
+<div class="welcome-container" id="container">
     <img src="../public/images/welcome-background.jpg" alt="">
 
     <div class="inner-container">
