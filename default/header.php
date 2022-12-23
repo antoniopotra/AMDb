@@ -8,6 +8,7 @@
     <title>AMDb</title>
     <link href="../public/css/style.css" type="text/css" rel="stylesheet">
     <link href="../public/css/media.css" type="text/css" rel="stylesheet">
+    <script src="../public/js/script.js"></script>
     <script src="https://kit.fontawesome.com/a20944aa28.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>

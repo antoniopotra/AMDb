@@ -4,33 +4,37 @@ session_start();
 require_once '../functions/database.php';
 require_once '../functions/movie.php';
 
-function reviewCard($movie, $review) { ?>
+function reviewCard($movie, $review)
+{ ?>
     <div class="review-card">
         <h2> <?php echo $movie['name']; ?> (<?php echo $movie['year']; ?>) </h2> <br>
         <h4> <?php echo $review['content']; ?> </h4> <br>
-        <h3> <?php echo $review['grade']; ?> <i class="fa-solid fa-star" style="color: var(--orange);"></i> </h3>
-    </div>
-<?php
-}
-
-function reviewCardMe($review) { ?>
-    <div class="review-card">
-        <h4> <?php echo $review['content']; ?> </h4> <br>
-        <h3> <?php echo $review['grade']; ?> <i class="fa-solid fa-star" style="color: var(--orange);"></i> </h3>
+        <h3> <?php echo $review['grade']; ?> <i class="fa-solid fa-star" style="color: var(--orange);"></i></h3>
     </div>
     <?php
 }
 
-function reviewCardOther($review, $user) { ?>
+function reviewCardMe($review)
+{ ?>
+    <div class="review-card">
+        <h4> <?php echo $review['content']; ?> </h4> <br>
+        <h3> <?php echo $review['grade']; ?> <i class="fa-solid fa-star" style="color: var(--orange);"></i></h3>
+    </div>
+    <?php
+}
+
+function reviewCardOther($review, $user)
+{ ?>
     <div class="review-card">
         <h2> <?php echo $user['username']; ?> </h2> <br>
         <h4> <?php echo $review['content']; ?> </h4> <br>
-        <h3> <?php echo $review['grade']; ?> <i class="fa-solid fa-star" style="color: var(--orange);"></i> </h3>
+        <h3> <?php echo $review['grade']; ?> <i class="fa-solid fa-star" style="color: var(--orange);"></i></h3>
     </div>
     <?php
 }
 
-function latestReviews() {
+function latestReviews()
+{
     $db = dbConnect();
     $id = $_SESSION['user'];
     $query = pg_query($db, "select r.* from review r where r.person = $id limit 10");
@@ -42,7 +46,8 @@ function latestReviews() {
     }
 }
 
-function myReviewsForMovie($movie) {
+function myReviewsForMovie($movie)
+{
     $db = dbConnect();
     $id = $_SESSION['user'];
     $query = pg_query($db, "select r.* from review r where r.person = $id and r.movie = $movie");
@@ -51,7 +56,8 @@ function myReviewsForMovie($movie) {
     }
 }
 
-function otherReviewsForMovie($movie) {
+function otherReviewsForMovie($movie)
+{
     $db = dbConnect();
     $id = $_SESSION['user'];
     $query = pg_query($db, "select r.* from review r where r.movie = $movie and r.person != $id");

@@ -409,7 +409,7 @@ body {
 }
 
 .profile-container {
-    margin: 10vh 5vw 0;
+    padding: 8vh 4vw 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -424,7 +424,7 @@ body {
 }
 
 .user-icon {
-    width: 300px;
+    width: 260px;
 }
 
 .movies-info {
@@ -433,7 +433,7 @@ body {
     justify-content: center;
 }
 
-.watched, .reviewed{
+.watched, .reviewed {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -452,4 +452,8 @@ body {
 
 .user-movies > h1 {
     margin-bottom: 30px;
+}
+
+.change-icon-color {
+    color: var(--orange) !important;
 }
