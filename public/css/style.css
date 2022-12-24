@@ -117,6 +117,10 @@ body {
     color: var(--dark-blue);
 }
 
+.form-popup > form > h6 {
+    color: var(--dark-blue);
+}
+
 .input-container {
     position: relative;
     height: 50px;

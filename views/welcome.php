@@ -30,7 +30,7 @@ include_once '../default/header.php';
             <h2>Log In</h2>
 
             <div class="input-container">
-                <input type="text" placeholder="Username" id="log-username" name="username" required>
+                <input type="text" placeholder="Username" id="log-username" name="username">
                 <label for="log-username">Username</label>
             </div>
 

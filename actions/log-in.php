@@ -6,6 +6,12 @@ require_once '../functions/database.php';
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+if (!($username != "" && $password != "")) {
+    $_SESSION['log-in-error'] = "All fields must be completed.";
+    header('location: ../views/welcome.php');
+    exit();
+}
+
 $db = dbConnect();
 
 $query = pg_query($db, "select username from person where username = '$username'");
