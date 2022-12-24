@@ -12,6 +12,7 @@ include_once '../default/navbar.php';
 require_once '../functions/database.php';
 require_once '../functions/movie.php';
 require_once '../functions/review.php';
+require_once '../functions/user.php';
 
 $db = dbConnect();
 
@@ -34,10 +35,20 @@ $watch = pg_fetch_array($query);
         <div class="poster">
             <?php moviePoster($movie); ?>
             <div class="watch-review-info">
-                <i class="fa-solid fa-eye fa-2x" style="color: white; cursor: pointer;" id="watch"
-                   onclick="changeIconColor(this.id)"></i>
-                <i class="fa-solid fa-file-lines fa-2x" style="color: white; cursor: pointer;" id="review"
-                   onclick="changeIconColor(this.id)"></i>
+                <?php if (hasWatched($movieId)) { ?>
+                    <i class="fa-solid fa-eye fa-2x" style="color: var(--orange); cursor: pointer;" id="watch"
+                       role="button" onclick="requestRemoveWatchedMovie(<?php echo $movieId ?>)"></i>
+                <?php } else { ?>
+                    <i class="fa-solid fa-eye fa-2x" style="color: white; cursor: pointer;" id="watch" role="button"
+                       onclick="requestAddWatchedMovie(<?php echo $movieId ?>)"></i>
+                <?php } ?>
+
+                <?php if (hasReviewed($movieId)) { ?>
+                    <i class="fa-solid fa-file-lines fa-2x" style="color: var(--orange); cursor: pointer;"
+                       id="review"></i>
+                <?php } else { ?>
+                    <i class="fa-solid fa-file-lines fa-2x" style="color: white; cursor: pointer;" id="review"></i>
+                <?php } ?>
             </div>
         </div>
 

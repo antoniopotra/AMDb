@@ -9,7 +9,7 @@ if (isset($_SESSION['user'])) {
 include_once '../default/header.php';
 ?>
 
-    <div class="welcome-container" id="container">
+    <div class="welcome-container" id="welcome-container">
         <img src="../public/images/welcome-background.jpg" alt="">
 
         <div class="inner-container">
