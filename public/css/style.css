@@ -23,6 +23,9 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
+}
+
+#welcome-container {
     transition: 0.5s;
 }
 
@@ -154,7 +157,7 @@ body {
     font-size: 16px;
 }
 
-.form-popup > form > button {
+.form-popup > form > .btn {
     padding: 15px 30px;
     border: none;
     border-radius: 8px;
@@ -163,12 +166,13 @@ body {
     font-size: 16px;
 }
 
-.form-popup > form > button:first-of-type {
+.form-popup > form > .btn:first-of-type {
     background-color: var(--light-blue);
 }
 
-.form-popup > form > button:last-of-type {
+.form-popup > form > .btn:last-of-type {
     background-color: var(--orange);
+    width: 40px;
 }
 
 .input-container > input:focus {
@@ -460,4 +464,8 @@ body {
 
 .change-icon-color {
     color: var(--orange) !important;
+}
+
+#movie-container {
+    transition: 0.5s;
 }

@@ -9,18 +9,37 @@ if (isset($_SESSION['user'])) {
 include_once '../default/header.php';
 ?>
 
-    <div class="welcome-container" id="welcome-container">
-        <img src="../public/images/welcome-background.jpg" alt="">
+    <div id="welcome-container">
+        <div class="welcome-container">
+            <img src="../public/images/welcome-background.jpg" alt="">
 
-        <div class="inner-container">
-            <div class="text-container">
-                <h1>AMDb</h1>
-                <h2>Your portal to the movie world</h2>
+            <div class="inner-container">
+                <div class="text-container">
+                    <h1>AMDb</h1>
+                    <h2>Your portal to the movie world</h2>
+                </div>
+
+                <div class="button-container">
+                    <button onclick="openForm('log-in-form')">Log In</button>
+                    <button onclick="openForm('sign-up-form')">Sign Up</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="how-it-works">
+            <div class="set">
+                <i class="fa-4x fa-solid fa-user"></i>
+                <p>Create an account</p>
             </div>
 
-            <div class="button-container">
-                <button onclick="openForm('log-in-form')">Log In</button>
-                <button onclick="openForm('sign-up-form')">Sign Up</button>
+            <div class="set">
+                <i class="fa-4x fa-solid fa-clapperboard"></i>
+                <p>Track your movies</p>
+            </div>
+
+            <div class="set">
+                <i class="fa-4x fa-solid fa-magnifying-glass"></i>
+                <p>Discover new movies</p>
             </div>
         </div>
     </div>
@@ -46,8 +65,11 @@ include_once '../default/header.php';
                 ?>
             </h6>
 
-            <button type="submit">Log In</button>
-            <button onclick="closeForm('log-in-form')">Close</button>
+            <input type="submit" class="btn" value="Log In" id="log-in-submit">
+            <label for="log-in-submit"></label>
+
+            <input onclick="closeForm('log-in-form')" class="btn" value="Close" id="log-in-close">
+            <label for="log-in-close"></label>
         </form>
     </div>
 
@@ -88,26 +110,12 @@ include_once '../default/header.php';
                 ?>
             </h6>
 
-            <button type="submit">Sign Up</button>
-            <button onclick="closeForm('sign-up-form')">Close</button>
+            <input type="submit" class="btn" value="Sign Up" id="sign-up-submit">
+            <label for="sign-up-submit"></label>
+
+            <input onclick="closeForm('sign-up-form')" class="btn" value="Close" id="sign-up-close">
+            <label for="sign-up-close"></label>
         </form>
-    </div>
-
-    <div class="how-it-works">
-        <div class="set">
-            <i class="fa-4x fa-solid fa-user"></i>
-            <p>Create an account</p>
-        </div>
-
-        <div class="set">
-            <i class="fa-4x fa-solid fa-clapperboard"></i>
-            <p>Track your movies</p>
-        </div>
-
-        <div class="set">
-            <i class="fa-4x fa-solid fa-magnifying-glass"></i>
-            <p>Discover new movies</p>
-        </div>
     </div>
 
 <?php

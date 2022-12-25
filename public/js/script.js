@@ -8,6 +8,16 @@ function closeForm(id) {
     document.getElementById('welcome-container').style.opacity = '1';
 }
 
+function openReviewWindow() {
+    document.getElementById('review-form').style.display = 'block';
+    document.getElementById('movie-container').style.opacity = '0.2';
+}
+
+function closeReviewWindow() {
+    document.getElementById('review-form').style.display = 'none';
+    document.getElementById('movie-container').style.opacity = '1';
+}
+
 function requestAddWatchedMovie(movie) {
     let request = new XMLHttpRequest();
     request.open("GET", "../requests/add-watched-movie.php?movie=" + movie, true);

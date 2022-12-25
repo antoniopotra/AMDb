@@ -31,75 +31,110 @@ $query = pg_query($db, "select count(w) from watched w where w.movie = $movieId"
 $watch = pg_fetch_array($query);
 ?>
 
-    <div class="movie-container">
-        <div class="poster">
-            <?php moviePoster($movie); ?>
-            <div class="watch-review-info">
-                <?php if (hasWatched($movieId)) { ?>
-                    <i class="fa-solid fa-eye fa-2x" style="color: var(--orange); cursor: pointer;" id="watch"
-                       role="button" onclick="requestRemoveWatchedMovie(<?php echo $movieId ?>)"></i>
-                <?php } else { ?>
-                    <i class="fa-solid fa-eye fa-2x" style="color: white; cursor: pointer;" id="watch" role="button"
-                       onclick="requestAddWatchedMovie(<?php echo $movieId ?>)"></i>
-                <?php } ?>
+    <div id="movie-container">
+        <div class="movie-container">
+            <div class="poster">
+                <?php moviePoster($movie); ?>
+                <div class="watch-review-info">
+                    <?php if (hasWatched($movieId)) { ?>
+                        <i class="fa-solid fa-eye fa-2x" style="color: var(--orange); cursor: pointer;" id="watch"
+                           role="button" onclick="requestRemoveWatchedMovie(<?php echo $movieId ?>)"></i>
+                    <?php } else { ?>
+                        <i class="fa-solid fa-eye fa-2x" style="color: white; cursor: pointer;" id="watch" role="button"
+                           onclick="requestAddWatchedMovie(<?php echo $movieId ?>)"></i>
+                    <?php } ?>
 
-                <?php if (hasReviewed($movieId)) { ?>
-                    <i class="fa-solid fa-file-lines fa-2x" style="color: var(--orange); cursor: pointer;"
-                       id="review"></i>
-                <?php } else { ?>
-                    <i class="fa-solid fa-file-lines fa-2x" style="color: white; cursor: pointer;" id="review"></i>
-                <?php } ?>
+                    <?php if (hasReviewed($movieId)) { ?>
+                        <i class="fa-solid fa-file-lines fa-2x" style="color: var(--orange); cursor: pointer;"
+                           id="review" role="button" onclick="openReviewWindow()"></i>
+                    <?php } else { ?>
+                        <i class="fa-solid fa-file-lines fa-2x" style="color: white; cursor: pointer;" id="review"
+                           role="button" onclick="openReviewWindow()"></i>
+                    <?php } ?>
+                </div>
+            </div>
+
+            <div class="general-info">
+                <div class="title">
+                    <h1> <?php echo $movie['name']; ?> (<?php echo $movie['year']; ?>) </h1>
+                </div>
+
+                <div class="director">
+                    <p class="lighter"> Directed by: </p>
+                    <p> <?php echo $director['name']; ?> </p>
+                </div>
+
+                <div class="average-rating">
+                    <h2>
+                        <?php
+                        if (isset($rating['round'])) {
+                            echo $rating['round'];
+                        } else {
+                            echo 0;
+                        }
+                        ?>
+                    </h2>
+                    <i class="fa-solid fa-star" style="color: var(--orange); transform: translateY(-1px)"></i>
+                    <h5>(<?php echo $rating['count']; ?> reviews, <?php echo $watch['count']; ?> watches)</h5>
+                </div>
+
+                <div class="genre">
+                    <?php getGenres($movieId); ?>
+                </div>
+
+                <div class="duration">
+                    <?php echo $movie['duration']; ?>
+                    <p class="lighter"> min </p>
+                </div>
+
+                <div class="casting">
+                    <p class="lighter"> Casting: </p>
+                    <?php getCast($movieId); ?>
+                </div>
             </div>
         </div>
 
-        <div class="general-info">
-            <div class="title">
-                <h1> <?php echo $movie['name']; ?> (<?php echo $movie['year']; ?>) </h1>
-            </div>
+        <div class="user-reviews">
+            <h1>My review</h1>
+            <?php myReviewForMovie($movieId); ?>
+        </div>
 
-            <div class="director">
-                <p class="lighter"> Directed by: </p>
-                <p> <?php echo $director['name']; ?> </p>
-            </div>
-
-            <div class="average-rating">
-                <h2>
-                    <?php
-                    if (isset($rating['round'])) {
-                        echo $rating['round'];
-                    } else {
-                        echo 0;
-                    }
-                    ?>
-                </h2>
-                <i class="fa-solid fa-star" style="color: var(--orange); transform: translateY(-1px)"></i>
-                <h5>(<?php echo $rating['count']; ?> reviews, <?php echo $watch['count']; ?> watches)</h5>
-            </div>
-
-            <div class="genre">
-                <?php getGenres($movieId); ?>
-            </div>
-
-            <div class="duration">
-                <?php echo $movie['duration']; ?>
-                <p class="lighter"> min </p>
-            </div>
-
-            <div class="casting">
-                <p class="lighter"> Casting: </p>
-                <?php getCast($movieId); ?>
-            </div>
+        <div class="user-reviews">
+            <h1>Other reviews</h1>
+            <?php otherReviewsForMovie($movieId); ?>
         </div>
     </div>
 
-    <div class="user-reviews">
-        <h1>My reviews</h1>
-        <?php myReviewForMovie($movieId); ?>
-    </div>
+    <div class="form-popup" id="review-form">
+        <form action="../actions/review.php?movie=<?php echo $movieId; ?>" method="post">
+            <h2><?php echo $movie['name']; ?> (<?php echo $movie['year']; ?>)</h2>
 
-    <div class="user-reviews">
-        <h1>Other reviews</h1>
-        <?php otherReviewsForMovie($movieId); ?>
+            <?php $review = getReview($movieId); ?>
+            <div class="input-container">
+                <input name="content" type="text" id="content" placeholder="Content"
+                       value="<?php echo $review['content']; ?>">
+                <label for="content">Content</label>
+            </div>
+
+            <div class="input-container">
+                <input name="grade" type="number" id="grade" placeholder="Grade" step="0.01" min="1" max="10" required
+                       value="<?php echo $review['grade']; ?>">
+                <label for="grade">Grade</label>
+            </div>
+
+            <h6>
+                <?php
+                echo $_SESSION['review-error'];
+                $_SESSION['review-error'] = "";
+                ?>
+            </h6>
+
+            <input type="submit" class="btn" id="submit">
+            <label for="submit"></label>
+
+            <input onclick="closeReviewWindow()" class="btn" value="Close" id="close">
+            <label for="close"></label>
+        </form>
     </div>
 
 <?php include_once '../default/footer.php';
