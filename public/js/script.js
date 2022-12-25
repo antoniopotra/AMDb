@@ -13,8 +13,6 @@ function requestAddWatchedMovie(movie) {
     request.open("GET", "../requests/add-watched-movie.php?movie=" + movie, true);
     request.send();
     window.location.reload();
-    // const watchIcon = document.getElementById('watch');
-    // watchIcon.style.color = 'var(--orange)';
 }
 
 function requestRemoveWatchedMovie(movie) {
@@ -22,6 +20,4 @@ function requestRemoveWatchedMovie(movie) {
     request.open("GET", "../requests/remove-watched-movie.php?movie=" + movie, true);
     request.send();
     window.location.reload();
-    // const watchIcon = document.getElementById('watch');
-    // watchIcon.style.color = 'white';
 }

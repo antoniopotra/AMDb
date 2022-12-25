@@ -6,7 +6,7 @@ require_once '../functions/database.php';
 function moviePoster($movie)
 { ?>
     <a href="../views/movie.php?movie=<?php echo $movie['id']; ?>" draggable="false">
-        <img src="<?php echo $movie['poster']; ?>" alt="" role="button" draggable="false">
+        <img src="<?php echo $movie['poster']; ?>" alt="" draggable="false">
     </a>
 <?php }
 
@@ -29,11 +29,11 @@ function recommendations()
     }
 }
 
-function recentlyWatched()
+function highestRated()
 {
     $db = dbConnect();
     $id = $_SESSION['user'];
-    $query = pg_query($db, "select m.poster, m.id from movie m, watched w where m.id = w.movie and w.person = $id limit 10");
+    $query = pg_query($db, "select m.poster, m.id from movie m, review r where r.person = $id and r.movie = m.id order by r.grade desc limit 10");
     while ($movie = pg_fetch_array($query)) {
         moviePoster($movie);
     }
@@ -43,7 +43,7 @@ function allWatched()
 {
     $db = dbConnect();
     $id = $_SESSION['user'];
-    $query = pg_query($db, "select m.poster, m.id from movie m, watched w where m.id = w.movie and w.person = $id");
+    $query = pg_query($db, "select m.poster, m.id from movie m, watched w where m.id = w.movie and w.person = $id order by m.name");
     while ($movie = pg_fetch_array($query)) {
         moviePoster($movie);
     }

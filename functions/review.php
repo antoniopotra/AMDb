@@ -7,7 +7,9 @@ require_once '../functions/movie.php';
 function reviewCard($movie, $review)
 { ?>
     <div class="review-card">
-        <h2> <?php echo $movie['name']; ?> (<?php echo $movie['year']; ?>) </h2> <br>
+        <a href="../views/movie.php?movie=<?php echo $movie['id']; ?>" draggable="false">
+            <h2> <?php echo $movie['name']; ?> (<?php echo $movie['year']; ?>) </h2> <br>
+        </a>
         <h4> <?php echo $review['content']; ?> </h4> <br>
         <h3> <?php echo $review['grade']; ?> <i class="fa-solid fa-star" style="color: var(--orange);"></i></h3>
     </div>
@@ -33,20 +35,20 @@ function reviewCardOther($review, $user)
     <?php
 }
 
-function latestReviews()
+function randomReviews()
 {
     $db = dbConnect();
     $id = $_SESSION['user'];
-    $query = pg_query($db, "select r.* from review r where r.person = $id limit 10");
+    $query = pg_query($db, "select r.* from review r where r.person = $id order by random() limit 10");
     while ($review = pg_fetch_array($query)) {
         $movie_id = $review['movie'];
-        $movie_query = pg_query($db, "select m.name, m.year from movie m where m.id = $movie_id");
+        $movie_query = pg_query($db, "select m.* from movie m where m.id = $movie_id");
         $movie = pg_fetch_array($movie_query);
         reviewCard($movie, $review);
     }
 }
 
-function myReviewsForMovie($movie)
+function myReviewForMovie($movie)
 {
     $db = dbConnect();
     $id = $_SESSION['user'];

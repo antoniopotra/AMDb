@@ -1,6 +1,8 @@
 <div class="navbar-wrapper">
     <ul class="navbar">
-        <li class="navbar-item"><img src="../public/images/logo.png" alt=""></li>
+        <li class="navbar-item">
+            <a href="../views/home.php"> <img src="../public/images/logo.png" alt=""> </a>
+        </li>
         <li class="navbar-item">
             <div class="dropdown">
                 <i class="fa-2x fa-solid fa-bars dropdown-icon"></i>

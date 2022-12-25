@@ -56,15 +56,15 @@ require_once '../functions/review.php';
     </div>
 
     <div class="user-movies">
-        <h1>Recently watched</h1>
+        <h1>Highest rated</h1>
         <div class="image-wrapper">
-            <?php recentlyWatched(); ?>
+            <?php highestRated(); ?>
         </div>
     </div>
 
     <div class="user-reviews">
-        <h1>Latest reviews</h1>
-        <?php latestReviews(); ?>
+        <h1>Reviews</h1>
+        <?php randomReviews(); ?>
     </div>
 
 <?php include_once '../default/footer.php'; ?>
