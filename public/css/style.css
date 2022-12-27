@@ -394,7 +394,7 @@ body {
     padding: 2px;
 }
 
-.casting > p:last-child > b {
+.casting > p:last-child b {
     display: none;
 }
 

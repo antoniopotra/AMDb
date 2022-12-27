@@ -24,8 +24,12 @@ function getGenres($movieId)
 function getCast($movieId)
 {
     $db = dbConnect();
-    $query = pg_query($db, "select a.name from casting c, actor a where c.movie = $movieId and c.actor = a.id");
+    $query = pg_query($db, "select a.* from casting c, actor a where c.movie = $movieId and c.actor = a.id");
     while ($actor = pg_fetch_array($query)) { ?>
-        <p> <?php echo $actor['name']; ?><b>,</b></p>
+        <p>
+            <a href="../views/actor-movies.php?actor=<?php echo $actor['id']; ?>">
+                <?php echo $actor['name']; ?><b>,</b>
+            </a>
+        </p>
     <?php }
 }
