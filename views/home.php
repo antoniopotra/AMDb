@@ -10,6 +10,7 @@ include_once '../default/header.php';
 include_once '../default/navbar.php';
 
 require_once '../functions/movie.php';
+require_once '../functions/user.php';
 ?>
 
     <div class="latest-movies">

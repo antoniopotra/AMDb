@@ -31,11 +31,7 @@ $query = pg_query($db, "select * from review where movie = $movieId and person =
 if (pg_num_rows($query) == 0) {
     pg_query($db, "insert into review (person, movie, content, grade) values ($userId, $movieId, '$content', $grade)");
 } else {
-    if ($content != "") {
-        pg_query($db, "update review set content = '$content', grade = $grade where movie = $movieId and person = $userId");
-    } else {
-        pg_query($db, "update review set grade = $grade where movie = $movieId and person = $userId");
-    }
+    pg_query($db, "update review set content = '$content', grade = $grade where movie = $movieId and person = $userId");
 }
 if (!hasWatched($movieId)) {
     pg_query($db, "insert into watched (person, movie) values ($userId, $movieId)");

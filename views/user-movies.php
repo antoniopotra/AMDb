@@ -9,11 +9,11 @@ if (!isset($_SESSION['user'])) {
 include_once '../default/header.php';
 include_once '../default/navbar.php';
 
-require_once '../functions/movie.php';
+require_once '../functions/user.php';
 ?>
 
 <div class="image-wrapper-movie-page">
-    <?php allWatched(); ?>
+    <?php allWatched($_GET['user']); ?>
 </div>
 
 <?php include_once '../default/footer.php'; ?>

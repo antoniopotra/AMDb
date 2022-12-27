@@ -96,12 +96,12 @@ $watch = pg_fetch_array($query);
 
         <div class="user-reviews">
             <h1>My review</h1>
-            <?php myReviewForMovie($movieId); ?>
+            <?php loggedUserReviewForMovie($movieId); ?>
         </div>
 
         <div class="user-reviews">
             <h1>Other reviews</h1>
-            <?php otherReviewsForMovie($movieId); ?>
+            <?php otherUserReviewsForMovie($movieId); ?>
         </div>
     </div>
 

@@ -11,6 +11,7 @@ include_once '../default/navbar.php';
 
 require_once '../functions/database.php';
 require_once '../functions/review.php';
+require_once '../functions/user.php';
 ?>
 
     <div class="profile-container">
@@ -19,28 +20,32 @@ require_once '../functions/review.php';
 
             <?php
             $db = dbConnect();
-            $id = $_SESSION['user'];
-            $query = pg_query($db, "select * from person where id = $id");
-            $person = pg_fetch_array($query);
+            $userId = $_GET['user'];
+            $query = pg_query($db, "select * from person where id = $userId");
+            if (pg_num_rows($query) != 1) {
+                echo 'Sorry, this profile does not exist.';
+                exit();
+            }
+            $user = pg_fetch_array($query);
             ?>
 
-            <h2> <?php echo $person['username']; ?> </h2>
+            <h2> <?php echo $user['username']; ?> </h2>
         </div>
 
         <div class="movies-info">
             <div class="watched">
                 <?php
-                $query = pg_query($db, "select count(m.id) from movie m join watched w on m.id = w.movie join person p on p.id = w.person where p.id = $id");
+                $query = pg_query($db, "select count(m.id) from movie m join watched w on m.id = w.movie join person p on p.id = w.person where p.id = $userId");
                 $watched = pg_fetch_array($query);
                 ?>
 
                 <h1> <?php echo $watched['count']; ?> </h1>
-                <h4><a href="../views/my-movies.php"> movies watched </a></h4>
+                <h4><a href="../views/user-movies.php?user=<?php echo $userId; ?>"> movies watched </a></h4>
             </div>
 
             <div class="reviewed">
                 <?php
-                $query = pg_query($db, "select count(m.id), round(avg(r.grade), 2) from movie m join review r on m.id = r.movie join person p on p.id = r.person where p.id = $id");
+                $query = pg_query($db, "select count(m.id), round(avg(r.grade), 2) from movie m join review r on m.id = r.movie join person p on p.id = r.person where p.id = $userId");
                 $review = pg_fetch_array($query);
                 ?>
 
@@ -58,13 +63,13 @@ require_once '../functions/review.php';
     <div class="user-movies">
         <h1>Highest rated</h1>
         <div class="image-wrapper">
-            <?php highestRated(); ?>
+            <?php highestRated($userId); ?>
         </div>
     </div>
 
     <div class="user-reviews">
         <h1>Reviews</h1>
-        <?php randomReviews(); ?>
+        <?php randomReviews($userId); ?>
     </div>
 
 <?php include_once '../default/footer.php'; ?>

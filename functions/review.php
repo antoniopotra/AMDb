@@ -4,7 +4,7 @@ session_start();
 require_once '../functions/database.php';
 require_once '../functions/movie.php';
 
-function reviewCard($movie, $review)
+function reviewCardMovie($movie, $review)
 { ?>
     <div class="review-card">
         <a href="../views/movie.php?movie=<?php echo $movie['id']; ?>" draggable="false">
@@ -16,7 +16,19 @@ function reviewCard($movie, $review)
     <?php
 }
 
-function reviewCardMe($review)
+function reviewCardUser($user, $review)
+{ ?>
+    <div class="review-card">
+        <a href="../views/profile.php?user=<?php echo $user['id']; ?>">
+            <h2> <?php echo $user['username']; ?> </h2> <br>
+        </a>
+        <h4> <?php echo $review['content']; ?> </h4> <br>
+        <h3> <?php echo $review['grade']; ?> <i class="fa-solid fa-star" style="color: var(--orange);"></i></h3>
+    </div>
+    <?php
+}
+
+function reviewCardNoMovieNoUser($review)
 { ?>
     <div class="review-card">
         <h4> <?php echo $review['content']; ?> </h4> <br>
@@ -25,48 +37,37 @@ function reviewCardMe($review)
     <?php
 }
 
-function reviewCardOther($review, $user)
-{ ?>
-    <div class="review-card">
-        <h2> <?php echo $user['username']; ?> </h2> <br>
-        <h4> <?php echo $review['content']; ?> </h4> <br>
-        <h3> <?php echo $review['grade']; ?> <i class="fa-solid fa-star" style="color: var(--orange);"></i></h3>
-    </div>
-    <?php
-}
-
-function randomReviews()
+function randomReviews($userId)
 {
     $db = dbConnect();
-    $id = $_SESSION['user'];
-    $query = pg_query($db, "select r.* from review r where r.person = $id order by random() limit 10");
+    $query = pg_query($db, "select r.* from review r where r.person = $userId order by random() limit 10");
     while ($review = pg_fetch_array($query)) {
-        $movie_id = $review['movie'];
-        $movie_query = pg_query($db, "select m.* from movie m where m.id = $movie_id");
-        $movie = pg_fetch_array($movie_query);
-        reviewCard($movie, $review);
+        $movieId = $review['movie'];
+        $movieQuery = pg_query($db, "select m.* from movie m where m.id = $movieId");
+        $movie = pg_fetch_array($movieQuery);
+        reviewCardMovie($movie, $review);
     }
 }
 
-function myReviewForMovie($movie)
+function loggedUserReviewForMovie($movieId)
 {
     $db = dbConnect();
     $id = $_SESSION['user'];
-    $query = pg_query($db, "select r.* from review r where r.person = $id and r.movie = $movie");
+    $query = pg_query($db, "select r.* from review r where r.person = $id and r.movie = $movieId");
     while ($review = pg_fetch_array($query)) {
-        reviewCardMe($review);
+        reviewCardNoMovieNoUser($review);
     }
 }
 
-function otherReviewsForMovie($movie)
+function otherUserReviewsForMovie($movieId)
 {
     $db = dbConnect();
     $id = $_SESSION['user'];
-    $query = pg_query($db, "select r.* from review r where r.movie = $movie and r.person != $id");
+    $query = pg_query($db, "select r.* from review r where r.movie = $movieId and r.person != $id");
     while ($review = pg_fetch_array($query)) {
-        $user_id = $review['person'];
-        $user_query = pg_query($db, "select p.username from person p where p.id = $user_id");
-        $user = pg_fetch_array($user_query);
-        reviewCardOther($review, $user);
+        $userId = $review['person'];
+        $userQuery = pg_query($db, "select p.* from person p where p.id = $userId");
+        $user = pg_fetch_array($userQuery);
+        reviewCardUser($user, $review);
     }
 }
