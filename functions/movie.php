@@ -8,21 +8,16 @@ function moviePoster($movie)
     </a>
 <?php }
 
-function latestMovies()
-{
-    $db = dbConnect();
-    $query = pg_query($db, "select poster, id from movie order by id desc limit 10");
-    while ($movie = pg_fetch_array($query)) {
-        moviePoster($movie);
-    }
-}
-
 function getGenres($movieId)
 {
     $db = dbConnect();
-    $query = pg_query($db, "select g.name from belongs b, genre g where b.genre = g.id and b.movie = $movieId");
+    $query = pg_query($db, "select g.* from belongs b, genre g where b.genre = g.id and b.movie = $movieId");
     while ($genre = pg_fetch_array($query)) { ?>
-        <p> <?php echo $genre['name']; ?> </p>
+        <p>
+            <a href="../views/genre-movies.php?genre=<?php echo $genre['id']; ?>">
+                <?php echo $genre['name']; ?>
+            </a>
+        </p>
     <?php }
 }
 

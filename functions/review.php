@@ -4,6 +4,14 @@ session_start();
 require_once '../functions/database.php';
 require_once '../functions/movie.php';
 
+function getReview($movieId)
+{
+    $db = dbConnect();
+    $userId = $_SESSION['user'];
+    $query = pg_query($db, "select r.* from review r where r.movie = $movieId and r.person = $userId");
+    return pg_fetch_array($query);
+}
+
 function reviewCardMovie($movie, $review)
 { ?>
     <div class="review-card">

@@ -61,7 +61,11 @@ $watch = pg_fetch_array($query);
 
                 <div class="director">
                     <p class="lighter"> Directed by: </p>
-                    <p> <?php echo $director['name']; ?> </p>
+                    <p>
+                        <a href="../views/director-movies.php?director=<?php echo $directorId; ?>">
+                            <?php echo $director['name']; ?>
+                        </a>
+                    </p>
                 </div>
 
                 <div class="average-rating">

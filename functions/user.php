@@ -48,14 +48,6 @@ function removeWatchedMovie($movieId)
     pg_query($db, "delete from watched w where w.movie = $movieId and w.person = $id");
 }
 
-function getReview($movieId)
-{
-    $db = dbConnect();
-    $userId = $_SESSION['user'];
-    $query = pg_query($db, "select r.* from review r where r.movie = $movieId and r.person = $userId");
-    return pg_fetch_array($query);
-}
-
 function recommendations()
 {
     $db = dbConnect();

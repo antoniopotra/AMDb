@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 include_once '../default/header.php';
 include_once '../default/navbar.php';
 
-require_once '../functions/movie.php';
+require_once '../functions/database.php';
 require_once '../functions/user.php';
 ?>
 
