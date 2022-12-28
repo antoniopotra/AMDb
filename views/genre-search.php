@@ -28,7 +28,7 @@ require_once '../functions/database.php';
                 $search = $_SESSION['search'];
                 $query = pg_query($db, "select * from genre where upper(name) like '%$search%'");
                 while ($genre = pg_fetch_array($query)) { ?>
-                    <a href="../views/director-movies.php?director=<?php echo $genre['id']; ?>" draggable="false">
+                    <a href="../views/genre-movies.php?genre=<?php echo $genre['id']; ?>" draggable="false">
                         <p><?php echo $genre['name']; ?></p>
                     </a>
                 <?php }

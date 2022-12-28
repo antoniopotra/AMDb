@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-require_once '../functions/database.php';
 require_once '../functions/movie.php';
 
 function addUser($fullName, $username, $email, $password)

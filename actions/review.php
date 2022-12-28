@@ -6,7 +6,6 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-require_once '../functions/database.php';
 require_once '../functions/user.php';
 
 $userId = $_SESSION['user'];

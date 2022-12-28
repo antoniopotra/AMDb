@@ -1,6 +1,4 @@
 <?php
-require_once '../functions/movie.php';
-
 function dbConnect()
 {
     static $db;
