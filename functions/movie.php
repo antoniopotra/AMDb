@@ -14,7 +14,7 @@ function getGenres($movieId)
     $query = pg_query($db, "select g.* from belongs b, genre g where b.genre = g.id and b.movie = $movieId");
     while ($genre = pg_fetch_array($query)) { ?>
         <p>
-            <a href="../views/genre-movies.php?genre=<?php echo $genre['id']; ?>">
+            <a href="../views/genre-movies.php?genre=<?php echo $genre['id']; ?>" draggable="false">
                 <?php echo $genre['name']; ?>
             </a>
         </p>
@@ -27,7 +27,7 @@ function getCast($movieId)
     $query = pg_query($db, "select a.* from casting c, actor a where c.movie = $movieId and c.actor = a.id");
     while ($actor = pg_fetch_array($query)) { ?>
         <p>
-            <a href="../views/actor-movies.php?actor=<?php echo $actor['id']; ?>">
+            <a href="../views/actor-movies.php?actor=<?php echo $actor['id']; ?>" draggable="false">
                 <?php echo $actor['name']; ?><b>,</b>
             </a>
         </p>

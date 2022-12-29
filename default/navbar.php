@@ -15,10 +15,10 @@
             <div class="dropdown">
                 <i class="fa-2x fa-solid fa-bars dropdown-icon"></i>
                 <div class="dropdown-content">
-                    <a href="../views/home.php">HOME</a>
-                    <a href="../views/user-movies.php?user=<?php echo $_SESSION['user']; ?>">MY MOVIES</a>
-                    <a href="../views/profile.php?user=<?php echo $_SESSION['user']; ?>">PROFILE</a>
-                    <a href="../actions/logout.php">LOGOUT</a>
+                    <a href="../views/home.php" draggable="false">HOME</a>
+                    <a href="../views/user-movies.php?user=<?php echo $_SESSION['user']; ?>" draggable="false">MY MOVIES</a>
+                    <a href="../views/profile.php?user=<?php echo $_SESSION['user']; ?>" draggable="false">PROFILE</a>
+                    <a href="../actions/logout.php" draggable="false">LOGOUT</a>
                 </div>
             </div>
         </li>

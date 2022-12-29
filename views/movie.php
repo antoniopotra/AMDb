@@ -60,7 +60,7 @@ $watch = pg_fetch_array($query);
                 <div class="director">
                     <p class="lighter"> Directed by: </p>
                     <p>
-                        <a href="../views/director-movies.php?director=<?php echo $directorId; ?>">
+                        <a href="../views/director-movies.php?director=<?php echo $directorId; ?>" draggable="false">
                             <?php echo $director['name']; ?>
                         </a>
                     </p>

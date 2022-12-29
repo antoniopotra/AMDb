@@ -26,7 +26,7 @@ function reviewCardMovie($movie, $review)
 function reviewCardUser($user, $review)
 { ?>
     <div class="review-card">
-        <a href="../views/profile.php?user=<?php echo $user['id']; ?>">
+        <a href="../views/profile.php?user=<?php echo $user['id']; ?>" draggable="false">
             <h2> <?php echo $user['username']; ?> </h2> <br>
         </a>
         <h4> <?php echo $review['content']; ?> </h4> <br>
