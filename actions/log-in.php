@@ -1,12 +1,14 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 require_once '../functions/database.php';
 
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-if (!($username != "" && $password != "")) {
+if (empty($username) || empty($password)) {
     $_SESSION['log-in-error'] = "All fields must be completed.";
     header('location: ../views/welcome.php');
     exit();

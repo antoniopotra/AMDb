@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 if (!isset($_SESSION['user'])) {
     header('location: ../views/welcome.php');
@@ -114,20 +116,28 @@ $watch = pg_fetch_array($query);
             <?php $review = getReview($movieId); ?>
             <div class="input-container">
                 <input name="content" type="text" id="content" placeholder="Content"
-                       value="<?php echo $review['content']; ?>">
+                       value="<?php
+                       if (isset($review['content'])) {
+                           echo $review['content'];
+                       } ?>">
                 <label for="content">Content</label>
             </div>
 
             <div class="input-container">
                 <input name="grade" type="number" id="grade" placeholder="Grade" step="0.01" min="1" max="10" required
-                       value="<?php echo $review['grade']; ?>">
+                       value="<?php
+                       if (isset($review['grade'])) {
+                           echo $review['grade'];
+                       } ?>">
                 <label for="grade">Grade</label>
             </div>
 
             <h6>
                 <?php
-                echo $_SESSION['review-error'];
-                $_SESSION['review-error'] = "";
+                if (isset($_SESSION['review-error'])) {
+                    echo $_SESSION['review-error'];
+                    $_SESSION['review-error'] = "";
+                }
                 ?>
             </h6>
 

@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 if (isset($_SESSION['user'])) {
     header('location: ../views/home.php');
@@ -60,8 +62,10 @@ include_once '../default/header.php';
 
             <h6>
                 <?php
-                echo $_SESSION['log-in-error'];
-                $_SESSION['log-in-error'] = "";
+                if (isset($_SESSION['log-in-error'])) {
+                    echo $_SESSION['log-in-error'];
+                    $_SESSION['log-in-error'] = "";
+                }
                 ?>
             </h6>
 
@@ -105,8 +109,10 @@ include_once '../default/header.php';
 
             <h6>
                 <?php
-                echo $_SESSION['sign-up-error'];
-                $_SESSION['sign-up-error'] = "";
+                if (isset($_SESSION['sign-up-error'])) {
+                    echo $_SESSION['sign-up-error'];
+                    $_SESSION['sign-up-error'] = "";
+                }
                 ?>
             </h6>
 

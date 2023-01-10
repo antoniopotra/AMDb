@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 require_once '../functions/user.php';
 
@@ -11,7 +13,7 @@ $repeatPassword = $_POST['repeat-password'];
 
 $db = dbConnect();
 
-if (!($fullName != "" && $username != "" && $email != "" && $password != "" && $repeatPassword != "")) {
+if (empty($fullName) || empty($username) || empty($email) || empty($password) || empty($repeatPassword)) {
     $_SESSION['sign-up-error'] = "All fields must be completed.";
     header('location: ../views/welcome.php');
     exit();
@@ -37,5 +39,5 @@ if (pg_num_rows($query) != 0) {
     exit();
 }
 
-$_SESSION['user'] = addUser($full_name, $username, $email, $password);
+$_SESSION['user'] = addUser($fullName, $username, $email, $password);
 header('location: ../views/home.php');

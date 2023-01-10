@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 if (!isset($_SESSION['user'])) {
     header('location: ../views/home.php');
@@ -17,7 +19,8 @@ require_once '../functions/database.php';
             <td class="search-criteria">
                 <ul>
                     <li><a href="../views/movie-search.php" draggable="false" class="lighter">Movie</a></li>
-                    <li><a href="../views/director-search.php" draggable="false" class="lighter selected">Director</a></li>
+                    <li><a href="../views/director-search.php" draggable="false" class="lighter selected">Director</a>
+                    </li>
                     <li><a href="../views/actor-search.php" draggable="false" class="lighter">Actor</a></li>
                     <li><a href="../views/genre-search.php" draggable="false" class="lighter">Genre</a></li>
                 </ul>

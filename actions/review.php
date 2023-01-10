@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 if (!isset($_SESSION['user'])) {
     header('location: ../views/welcome.php');
@@ -13,7 +15,7 @@ $movieId = $_GET['movie'];
 $content = $_POST['content'];
 $grade = $_POST['grade'];
 
-if ($grade == "") {
+if (empty($grade)) {
     $_SESSION['review-error'] = 'Grade is mandatory.';
     header('location: ../views/movie.php?movie=' . $movieId);
     exit();

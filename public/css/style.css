@@ -248,6 +248,7 @@ body {
 .navbar-item:first-child {
     margin-right: auto;
     padding-left: 4vw;
+    transform: translateY(2px);
 }
 
 .navbar-item:last-child {
