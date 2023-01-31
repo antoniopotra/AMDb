@@ -8,7 +8,7 @@ require_once '../functions/movie.php';
 function addUser($fullName, $username, $email, $password)
 {
     $db = dbConnect();
-    $query = pg_query($db, "insert into person (name, username, email, password) values ('$fullName', '$username', '$email','$password') returning id");
+    $query = pg_query($db, "insert into person (name, username, email, password) values ('$fullName', '$username', '$email', crypt('$password', gen_salt('bf'))) returning id");
     $user = pg_fetch_array($query);
     return $user['id'];
 }

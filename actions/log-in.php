@@ -16,14 +16,15 @@ if (empty($username) || empty($password)) {
 
 $db = dbConnect();
 
-$query = pg_query($db, "select username from person where username = '$username'");
+$query = pg_query($db, "select username, password from person where username = '$username'");
 if (pg_num_rows($query) != 1) {
     $_SESSION['log-in-error'] = "Username doesn't exist.";
     header('location: ../views/welcome.php');
     exit();
 }
 
-$query = pg_query($db, "select id, password from person where username = '$username' and password = '$password'");
+$encryptedPassword = pg_fetch_array($query)['password'];
+$query = pg_query($db, "select id, password from person where username = '$username' and password = crypt('$password', '$encryptedPassword')");
 if (pg_num_rows($query) != 1) {
     $_SESSION['log-in-error'] = "Incorrect password.";
     header('location: ../views/welcome.php');
