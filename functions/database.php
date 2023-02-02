@@ -7,7 +7,7 @@ function dbConnect()
                                          port     = 5432
                                          dbname   = AMDb
                                          user     = postgres
-                                         password = postgre@AntonioPotra12");
+                                         password = complete-password-here");
     }
     return $db;
 }
