@@ -1,0 +1,14 @@
+{
+  "name": "vendor_name/amdb",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "antoniopotra",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  }
+}
